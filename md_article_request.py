@@ -95,10 +95,9 @@ def request_md(requester, file_name, draft_flag):
         body = "".join(lines[4:])
     else:
         body = "".join(lines[3:])
-
     # descriptionがなければ本文のはじめの方を切り取る
     if description == 'auto':
-        description = body[:200]
+        description = body[:300]
     json_data = json.dumps({'title': title,
                             'slug': slug,
                             'tags': tags,
