@@ -14,10 +14,10 @@ sentences = gensim.models.word2vec.Text8Corpus(filename)
 model = Word2Vec(sentences, size=100, window=5, min_count=5, workers=4)
 model.most_similar( [ vector ], [], 1)[0][0]
 ``` 
-ただし、第3引数は出力する類似単語数を表す。　　
-　　
+ただし、第3引数は出力する類似単語数を表す。
+
 ## 使用例
-[青空文庫：江戸川乱歩](http://www.aozora.gr.jp/index_pages/person1779.html)の解析をしたので、その例を示す。　　　　
+[青空文庫：江戸川乱歩](http://www.aozora.gr.jp/index_pages/person1779.html)の解析をしたので、その例を示す。
 
 ```python
 model.wv["ベクトル化したい単語"]

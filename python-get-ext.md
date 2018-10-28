@@ -1,4 +1,4 @@
-title=pythonで拡張を取得する
+title=pythonで拡張子を取得する
 slug=python-get-extn
 tags=[python]
 ファイルの拡張子を取得する方法をいつも忘れるのでメモ

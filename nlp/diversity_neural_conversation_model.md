@@ -1,6 +1,6 @@
 title=ニューラルネットワークを用いた対話モデルのための多様性を促進する目的関数
 slug=diversity_neural_conversation_model
-tags=[Deeplearning, seq2seq, NLP]
+tags=[Deeplearning, seq2seq, NLP,論文]
 Qiitaに投稿した記事、[kerasでHREDを構築してみる](https://qiita.com/iss-f/items/0b5a2766e789213b42c1)の記事で、こちらの論文が参考になるとのコメント頂いて、読んで見たので簡単にまとめました。
 
 A Diversity-Promoting Objective Function for Neural Conversation Models
@@ -63,11 +63,11 @@ MMI-antiLMとMMI-bidiを適応するにあたり、
 ### MMI-antiLM(an anti-language model)
 式(1)の第2項の$p(T)$は、次のように表される。
 
-$$ p(T) = \prod_{k=1}^{N_t} p(t_k \mid t_1 , \cdots , t_l ) $$
+$$ p(T) = \prod_ {k=1}^{N_ t} p(t_ k \mid t_ 1 , \cdots , t_ {k-1} ) $$
 
 anti-language modelでは、流暢な応答にもペナルティを与えるので、誤った文法の出力に繋がる可能性がある。そこで、$P(T)$に現在の単語$k$に基づく重み$g(k)$を乗算した、$U(T)$を導入する。
 
-$$ U(T)=\prod_{k=1}^{N_t} p(t_k \mid t_1 \cdots t_l )・g(k) $$
+$$ U(T)=\prod_ {k=1}^{N_ t} p(t_ k \mid t_ 1 \cdots t_ {k-1} )・g(k) $$
 
 \begin{eqnarray}
 g(k)

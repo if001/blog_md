@@ -6,10 +6,12 @@ Hugoに画像を載せるときは、[shortcodes](https://gohugo.io/content-mana
 画像の場合は、static/media以下に画像ファイルが置いてある状態で、次のように書く。
 
 ```
-\{{</* figure src="/media/spf13.jpg" title="Steve Francia" */>}}
+\{{</* figure src="/media/spf13.jpg" title="Steve Francia" width="320" height="640" */>}}
 ```
 
-shortcodesをエスケープさせるために、/*を使っている。
+画像のサイズも指定可能。
+
+ここでは、shortcodesをエスケープさせるために、/*を使っている。
 
 ```
 {{</* code */>}}
