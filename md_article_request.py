@@ -6,6 +6,8 @@ title=title
 slug=slug
 tags=tag1,tag2
 body
+
+
 """
 
 # import urllib.request
@@ -69,7 +71,7 @@ def get_images(body):
     figure_line = list()
     for b in body.split("\n"):
         # 先頭にスラッシュがあるとエスケープ
-        if ("figure src=" in b) and (b[0] != "\\"):
+        if ("figure src=" in b) and (b[0] != "^\\"):
             figure_line.append(b)
 
     images = list()
@@ -88,10 +90,19 @@ def request_md(requester, file_name, draft_flag):
     title = get_param('title', lines[0])
     slug = get_param('slug', lines[1])
     tags = get_param('tag', lines[2])
-    body = "".join(lines[3:])
+    if re.search("description=.*",lines[3]):
+        description = get_param('description', lines[3])
+        body = "".join(lines[4:])
+    else:
+        body = "".join(lines[3:])
+
+    # descriptionがなければ本文のはじめの方を切り取る
+    if description == 'auto':
+        description = body[:200]
     json_data = json.dumps({'title': title,
                             'slug': slug,
                             'tags': tags,
+                            'description': description,
                             'body': body}).encode("utf-8")
     # 画像のアップロード
     image_files = get_images(body)
